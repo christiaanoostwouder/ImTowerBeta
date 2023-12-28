@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float movespeed;
+    public float movespeed = 2.5f;
 
     public float groundDrag;
 
@@ -51,6 +51,11 @@ public class playerMovement : MonoBehaviour
 
     private void Update()
     {
+        if(groundDrag != 50f)
+        {
+            movespeed = 0f;
+        }
+
         //ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 

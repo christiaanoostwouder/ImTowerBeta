@@ -5,15 +5,18 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     public Animator animator;
+    public Rigidbody rb;
     
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         Animator animator = GetComponent<Animator>();
     }
 
    
     void Update()
     {
+        float speed = rb.velocity.magnitude;
         if (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D))
         {
             animator.SetBool("Walk",true);
@@ -24,7 +27,7 @@ public class PlayerAnimation : MonoBehaviour
             
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift)&& speed > 2f)
         {
             animator.SetBool("Run", true);
             animator.SetBool("Walk", false);
@@ -45,6 +48,8 @@ public class PlayerAnimation : MonoBehaviour
         {
             animator.SetBool("Jump", false);
         }
+
+        
 
     }
 }
