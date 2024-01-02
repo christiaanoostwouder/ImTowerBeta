@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Beta scenes/test scene envirement.unity
+    guid: c732593fe76e5a84197f9cd13963f706
+  - enabled: 1
+    path: Assets/Scenes/Main scenes/TowerRoom 1.unity
+    guid: 9062d6424ea6e6643920897164d3df3b
   m_configObjects: {}
