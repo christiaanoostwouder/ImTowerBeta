@@ -24,14 +24,14 @@ public class playerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    public bool grounded;
 
     public Transform orientation;
 
     float horizontalInput;
     float verticalInput;
 
-    Vector3 moveDirection;
+    public Vector3 moveDirection;
 
     public Rigidbody rb;
 
@@ -56,7 +56,7 @@ public class playerMovement : MonoBehaviour
             movespeed = 0f;
         }
 
-        //ground check
+        
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         MyInput();
@@ -69,7 +69,7 @@ public class playerMovement : MonoBehaviour
 
         
 
-        //handle drag
+       
         if (grounded)
             rb.drag = groundDrag;
         else
@@ -91,14 +91,14 @@ public class playerMovement : MonoBehaviour
         }
 
 
-        //when to jump
+        
         if(Input.GetKeyDown(jumpKey) && readyToJump)
         {                       
             Jump();           
         }
     }
 
-    private void Moveplayer()
+    public void Moveplayer()
     {
         //movement direction calculation
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;

@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class enemyDamage : MonoBehaviour
 {
-    public playerAttack PA;
-    public GameObject HitParticle;
-
-
-    private void OnTriggerEnter(Collider other) 
+    private void OnTriggerEnter(Collider collision)
     {
-        if(other.tag == "Enemy") 
+        if (collision.tag == "Player")
         {
-            Debug.Log("Enemy");
-            Instantiate(HitParticle, new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z), other.transform.rotation);
+            var healthComponent = collision.GetComponent<playerhealth>();
+            Debug.Log("Damage");
+            healthComponent.TakeDamage(20);
         }
     }
 }
